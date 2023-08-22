@@ -5,7 +5,7 @@ from ultralytics import YOLO
 import cv2
 
 # Define the paths
-model_weights_path = r"C:\Users\musta\Downloads\shelf_availability\train2\weights\best.pt"
+model_weights_path = "best.pt"
 
 # Define Streamlit app layout
 layout_image = Image.open("on_shelf_availability_k.jpg")
