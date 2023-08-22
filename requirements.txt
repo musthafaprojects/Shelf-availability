@@ -66,6 +66,4 @@ urllib3==2.0.4
 validators==0.21.2
 watchdog==3.0.0
 zipp==3.16.2
-opencv-python-headless==4.8.0.76
-libgl1-mesa-glx
 
