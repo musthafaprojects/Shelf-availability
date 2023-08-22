@@ -8,7 +8,7 @@ import cv2
 model_weights_path = r"C:\Users\musta\Downloads\shelf_availability\train2\weights\best.pt"
 
 # Define Streamlit app layout
-layout_image = Image.open(r"C:\Users\musta\Downloads\on_shelf_availability_k.jpg")
+layout_image = Image.open("on_shelf_availability_k.jpg")
 st.image(layout_image, use_column_width=True)
 
 # Title and description
