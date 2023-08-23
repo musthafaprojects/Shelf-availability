@@ -57,7 +57,7 @@ if uploaded_file is not None:
                     total_area_space_na += box_area
                     label = "space_na"
 
-                # Draw thicker bounding boxes on the image
+                # Draw  bounding boxes on the image
                 for i in range(box_thickness):
                     draw.rectangle([b[0] - i, b[1] - i, b[2] + i, b[3] + i], outline=box_color)
 
@@ -65,7 +65,7 @@ if uploaded_file is not None:
                 label_x = (b[0] + b[2]) / 2
                 label_y = (b[1] + b[3]) / 2
 
-                # Create a background rectangle for the label (black background)
+                # Create a background rectangle for the label
                 label_bg_width = len(label) * 10  # Adjust the width based on label length
                 label_bg_height = 20  # Adjust the height as needed
                 label_bg_coords = (
@@ -73,7 +73,7 @@ if uploaded_file is not None:
                 label_y + label_bg_height / 2)
                 draw.rectangle(label_bg_coords, fill="black")
 
-                # Draw the label with a smaller font size (white text)
+                # Draw the label
                 label_font = ImageFont.truetype("arial.ttf", 12)  # Adjust the font size as needed
                 text_width, text_height = draw.textsize(label, font=label_font)
                 draw.text((label_x - text_width / 2, label_y - text_height / 2), label, fill="white", font=label_font)
@@ -82,7 +82,7 @@ if uploaded_file is not None:
         total_available_area = total_area_space_a / (image_width * image_height)
         available_area_percentage = total_available_area * 100
 
-        # Calculate non-available area percentage as 100 minus available area percentage
+        # Calculate non-available area percentage
         non_available_area_percentage = 100 - available_area_percentage
 
         # Display the image with bounding boxes
