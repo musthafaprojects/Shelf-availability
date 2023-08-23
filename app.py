@@ -78,14 +78,12 @@ if uploaded_file is not None:
                 text_width, text_height = draw.textsize(label, font=label_font)
                 draw.text((label_x - text_width / 2, label_y - text_height / 2), label, fill="white", font=label_font)
 
-
         # Calculate available area percentage
         total_available_area = total_area_space_a / (image_width * image_height)
         available_area_percentage = total_available_area * 100
 
-        # Calculate non-available area percentage
-        total_non_available_area = total_area_space_na / (image_width * image_height)
-        non_available_area_percentage = total_non_available_area * 100
+        # Calculate non-available area percentage as 100 minus available area percentage
+        non_available_area_percentage = 100 - available_area_percentage
 
         # Display the image with bounding boxes
         st.image(image, caption="Image with Bounding Boxes", use_column_width=True)
