@@ -1,6 +1,6 @@
 import streamlit as st
 import os
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 from ultralytics import YOLO
 import cv2
 
@@ -65,8 +65,19 @@ if uploaded_file is not None:
                 label_x = (b[0] + b[2]) / 2
                 label_y = (b[1] + b[3]) / 2
 
-                # Draw label inside the bounding box
-                draw.text((label_x, label_y), label, fill="white", anchor="center")
+                # Create a background rectangle for the label (black background)
+                label_bg_width = len(label) * 10  # Adjust the width based on label length
+                label_bg_height = 20  # Adjust the height as needed
+                label_bg_coords = (
+                label_x - label_bg_width / 2, label_y - label_bg_height / 2, label_x + label_bg_width / 2,
+                label_y + label_bg_height / 2)
+                draw.rectangle(label_bg_coords, fill="black")
+
+                # Draw the label with a smaller font size (white text)
+                label_font = ImageFont.truetype("arial.ttf", 12)  # Adjust the font size as needed
+                text_width, text_height = draw.textsize(label, font=label_font)
+                draw.text((label_x - text_width / 2, label_y - text_height / 2), label, fill="white", font=label_font)
+
 
         # Calculate available area percentage
         total_available_area = total_area_space_a / (image_width * image_height)
