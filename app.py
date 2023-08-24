@@ -74,7 +74,7 @@ if uploaded_file is not None:
                 draw.rectangle(label_bg_coords, fill="black")
 
                 # Draw the label
-                label_font = ImageFont.truetype("arial.ttf", 12)  # Adjust the font size as needed
+                label_font = ImageFont.load_default()
                 text_width, text_height = draw.textsize(label, font=label_font)
                 draw.text((label_x - text_width / 2, label_y - text_height / 2), label, fill="white", font=label_font)
 
